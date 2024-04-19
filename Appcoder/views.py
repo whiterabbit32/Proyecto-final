@@ -35,7 +35,7 @@ def alta_curso (request):
             mensaje= "El curso ha sido agregado con exito a la base de datos"
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
     else:
          return render(request, 'cursos.html',{"url":avatares[0].imagen.url})
 
@@ -66,7 +66,7 @@ def editar_curso (request , id):
             mensaje= "El curso ha sido editado con exito en la base de datos"
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
     else:
         mi_formulario = CursoForm(initial= {"curso": curso.nombre,"promocion": curso.promocion})
     return render (request , "editar_curso.html", {"url":avatares[0].imagen.url, "mi_formulario": mi_formulario, "curso": curso})
@@ -102,7 +102,7 @@ def registrar_estudiante(request):
             mensaje= f" Bienvenido, ha sido registrado como alumno exitosamente"
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
         else:
             return HttpResponse ("formulario invalido")
     else:
@@ -125,7 +125,7 @@ def editar_alumnos (request, id):
             mensaje= "El alumno ha sido editado con exito en la base de datos"
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
     else:
         mi_formulario = EstudianteForm(initial= {"nombre": estudiante.nombre,"apellido": estudiante.apellido, "email": estudiante.email, "dni": estudiante.dni})
     return render (request , "edicion_alumno.html", {"url":avatares[0].imagen.url,"mi_formulario": mi_formulario, "estudiante": estudiante})
@@ -156,7 +156,7 @@ def profesor (request):
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
             
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
      else:
          return render(request, 'profesores.html',{"url":avatares[0].imagen.url})
 @login_required    
@@ -181,7 +181,7 @@ def editar_profesor (request, id):
             mensaje= "El profesor ha sido editado con exito en la base de datos"
             diccionario= {"mensaje": [mensaje]}
             documento= respuesta.render (diccionario)
-            return HttpResponse (documento, {"url":avatares[0].imagen.url})
+            return HttpResponse (documento)
     else:
         mi_formulario = ProfesorForm(initial= {"nombre": profesor.nombre,"apellido": profesor.apellido, "email": profesor.email, "especialidad": profesor.especialidad})
     return render (request , "edicion_profesor.html", {"url":avatares[0].imagen.url,"mi_formulario": mi_formulario, "profesor": profesor})

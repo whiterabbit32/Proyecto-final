@@ -55,7 +55,7 @@ ROOT_URLCONF = 'clase18.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["C:/Users/Giuliano/Desktop/tercera_entrega/Appcoder/template/"],
+        'DIRS': ["C:/Users/Giuliano/Desktop/Entrega_final/Appcoder/template/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
