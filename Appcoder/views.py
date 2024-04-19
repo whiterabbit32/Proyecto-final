@@ -49,7 +49,7 @@ def eliminar_curso (request, id):
     template= loader.get_template ("cursos.html")
     diccionario= {"cursos": [curso] ,"mensaje": [mensaje]}
     
-    return HttpResponse (template.render(diccionario, request), {"url":avatares[0].imagen.url})
+    return HttpResponse (template.render(diccionario, request))
     
 
 def editar_curso (request , id):
@@ -137,7 +137,7 @@ def eliminar_alumno(request, id):
     alumno= Estudiante.objects.all()
     mensaje= "El alumno ha sido eliminado de la base de datos"
     template= loader.get_template ("alumnos.html")
-    diccionario= {"alumnos": [alumno] ,"mensaje": [mensaje], "url":avatares[0].imagen.url}
+    diccionario= {"alumnos": [alumno] ,"mensaje": [mensaje]}
     
     return HttpResponse (template.render(diccionario, request))
 
@@ -195,7 +195,7 @@ def eliminar_profesor (request, id):
     template= loader.get_template ("profesores.html")
     diccionario= {"profesor": [profesor] ,"mensaje": [mensaje]}
     
-    return HttpResponse (template.render(diccionario, request),{"url":avatares[0].imagen.url})
+    return HttpResponse (template.render(diccionario, request))
 
 def ver_buscar_publicaciones (request):
     avatares= Avatar.objects.filter(user=request.user.id)
