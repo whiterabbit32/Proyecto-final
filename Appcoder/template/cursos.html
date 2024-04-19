@@ -1,0 +1,34 @@
+{% extends "padre.html"%}
+
+{%load static%}
+
+{% block contenido%}
+
+{%for m in mensaje%}
+<div class="alert alert-success" role="alert">
+    <strong>{{m}}</strong>
+  </div>
+{% endfor %}
+<form action="cursos" method="POST">
+  {% csrf_token %}
+  <div class="container">
+    <div class="row">
+    <div class="col-md-6">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="apellido" class="form-label">promocion</label>
+    <input type="text" class="form-control" id="promocion" name="promocion" aria-describedby="emailHelp">
+  </div>
+  
+</div>
+  
+  
+  <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+
+  
+  
+
+{% endblock %}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {%load static%}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>
+            Whiterabbit
+        </title>
+           
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../static/Appcoder/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{%static 'Appcoder/css/styles.css'%}" rel="stylesheet" />
+    <style>
+        
+        
+    
+    </style>
+    </head>
+    <body>
+        
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand navbar-custom" href= "{% url 'inicio' %}">
+                    <img class="rounded-circle imagen-custom" src="{% static 'Appcoder/assets/img/snowball.jpg' '%}"></a>
+                    <p>Whiterabbit</p>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Cursos
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" type="button" href="{% url 'ver_cursos'%}">ver cursos</a></li>
+                      {% if user.is_authenticated and user.is_superuser %}
+                      <li><a class="dropdown-item" type="button" href="{% url 'cursos'%}">registrar curso</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                <a class="btn btn-primary" href="{% url 'login'%}">login</a>
+                {% if request.user.is_authenticated %}
+                <img src="{{url}}" height="60px" alt="">
+                <p> Bienvenido {{user.username}} </p>
+                {% endif %}
+                <div class="dropdown">
+                  {% if not user.is_authenticated or user.is_authenticated and user.is_superuser%}
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Alumnos
+                    </button>
+                    {% endif %}
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" type="button" href="{% url 'alumnos'%}">registrarse</a></li>
+                      {% if user.is_authenticated and user.is_superuser %}
+                      <li><a class="dropdown-item" type="button" href="{% url 'ver_alumnos'%}">ver alumnos</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profesores
+                    </button>
+                    <ul class="dropdown-menu">
+                      {% if user.is_authenticated and user.is_superuser %}
+                      <li><a class="dropdown-item" type="button" href="{% url 'profesor'%}">registrar profesor</a></li>
+                      {% endif %}
+                      <li><a class="dropdown-item" type="button" href="{% url 'ver_profesores'%}">ver profesores</a></li>
+                    </ul>
+                  </div>
+                
+            </div>
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Publicaciones
+                </button>
+                {% endif %}
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" type="button" href="{% url 'ver_buscar_publicaciones'%}">Busqueda por materia</a></li>
+                  {% if user.is_authenticated and user.is_superuser %}
+                  <li><a class="dropdown-item" type="button" href="{% url 'publicacion'%}">subir publicacion</a></li>
+                  {% endif %}
+                  </ul>
+              </div>
+              {% if user.is_authenticated %}
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">LogOut</button>
+            </form>
+              {% endif %}
+              </nav>
+        {% block contenido %}
+
+
+
+
+        {% endblock %}
+                
+            <!-- Footer-->
+        <footer class="footer bg-light footer-custom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><a href="#!">About</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Contact</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Sitio propiedad de Whiterabbit S.A. Derechos y acciones reservadas.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
+

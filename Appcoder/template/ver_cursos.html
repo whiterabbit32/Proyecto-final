@@ -1,0 +1,40 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+{%for m in mensaje%}
+<div class="alert alert-success" role="alert">
+    <strong>{{m}}</strong>
+  </div>
+{% endfor %}
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            
+            <th>Nombre</th>
+            <th>Promoción</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for n in cursos %}
+        <tr>
+            
+            <td>{{ n.nombre }}</td>
+            <td>{{ n.promocion }}</td>
+            <td>
+                {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'eliminar_curso' n.id %}" class="btn btn-danger btn-sm">BORRAR</a>
+                <a href="{% url 'editar_curso' n.id %}" class="btn btn-danger btn-sm">EDITAR</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+        <a href="{% url 'principal' %}" class="btn btn-primary" >Volver</a>
+    </tbody>
+</table>
+{% endblock %}

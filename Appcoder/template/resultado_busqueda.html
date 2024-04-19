@@ -1,0 +1,44 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Resultados de la Búsqueda</title>
+</head>
+<body>
+    <h1>Resultados de la Búsqueda</h1>
+    
+    {% if publicaciones %}
+    <ul>
+     <table class="table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Materia</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+            {% for n in publicaciones %}
+                <tr>
+                    <td>{{ n.titulo}}</td>
+                    <td>{{ n.autor }}</td>
+                    <td>{{ n.materia }}</td>
+                    
+            
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron publicaciones para la materia especificada.</p>
+        {% endif %}
+    </body>
+</table>
+    </html>
+
+{% endblock %}

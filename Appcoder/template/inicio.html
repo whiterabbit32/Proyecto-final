@@ -1,0 +1,41 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12  col-md-4">
+
+            <div class="card">
+
+                <img src="{% static 'AppCoder/assets/img/uni.jpg' %}"/>
+
+                <div class="card-body">
+
+                    <h5 class="card-title">Bienvenido al sitio cultural Whiterabbit</h5>
+
+                    
+
+                    
+                    
+                    
+                    <a href="{% url 'editar_usuario' %}" class="btn btn-danger">editar su usuario</a>
+
+                </div>
+
+            </div>
+
+        
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

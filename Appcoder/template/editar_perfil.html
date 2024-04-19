@@ -1,0 +1,12 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<h2>Editar Perfil</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ miFormulario.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>
+{% endblock %}

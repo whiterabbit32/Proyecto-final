@@ -1,0 +1,20 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<form action="buscar_publicaciones" method="GET">
+  {% csrf_token %}
+  <h3>"AQUI PODRA BUSCAR PUBLICACIONES POR MATERIA"</h3>
+    <div class="mb-3">
+    <label for="nombre" class="form-label">Materia</label>
+    <input type="text" class="form-control" id="nombre" name="materia" aria-describedby="emailHelp">
+  </div>
+  
+  
+  <button type="submit" class="btn btn-primary">buscar</button>
+</form>
+<a href="{% url 'principal' %}" class="btn btn-primary" >Volver</a>
+
+{%  endblock %}

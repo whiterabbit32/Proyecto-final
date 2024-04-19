@@ -1,0 +1,31 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+ 
+
+{% block contenido %}
+{%for m in mensaje%}
+<div class="alert alert-success" role="alert">
+    <strong>{{m}}</strong>
+  </div>
+{% endfor %}
+    <form action="{% url 'editar_curso' curso.id %}" method="POST">
+
+        {% csrf_token %}
+
+        <p>Nombre</p>
+
+        {{mi_formulario.nombre}}
+
+        <p>Promocion</p>
+
+        {{mi_formulario.promocion}}
+
+        <button class="btn btn-primary">Enviar</button>
+
+    </form>
+
+ 
+
+{% endblock %}
